@@ -3,6 +3,7 @@ import corse from 'cors';
 import dotenv from 'dotenv';
 import cookeParser from 'cookie-parser';
 import { connectDB } from './db/mongodb.js';
+import authRouter from './routes/auth.route.js';
 
 dotenv.config();
 const app = express();
@@ -14,6 +15,7 @@ app.use(corse({credentials: true}))
 app.get('/', (re, res)=>{
     res.send("this is root route")
 })
+app.post('/api/auth', authRouter)
 
 app.listen(PORT, ()=>{
     connectDB()
