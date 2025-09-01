@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import cookeParser from 'cookie-parser';
 import { connectDB } from './db/mongodb.js';
 import authRouter from './routes/auth.route.js';
+import userRouter from './routes/user.route.js';
 
 dotenv.config();
 const app = express();
@@ -16,6 +17,7 @@ app.get('/', (re, res)=>{
     res.send("this is root route")
 })
 app.post('/api/auth', authRouter)
+app.post('/api/user', userRouter)
 
 app.listen(PORT, ()=>{
     connectDB()
